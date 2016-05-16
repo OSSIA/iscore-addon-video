@@ -22,6 +22,7 @@ class VideoPresenter final :
         explicit VideoPresenter(
                 const LayerModel& model,
                 VideoView* view,
+                const Process::ProcessPresenterContext& ctx,
                 QObject* parent);
 
         void setWidth(qreal width) override;

@@ -45,11 +45,13 @@ class ProcessFactory final : public Process::ProcessFactory
         Process::LayerPresenter* makeLayerPresenter(
                 const Process::LayerModel& model,
                 Process::LayerView* v,
+                const Process::ProcessPresenterContext& ctx,
                 QObject* parent) override
         {
             return new Video::VideoPresenter{
                 dynamic_cast<const LayerModel&>(model),
                 dynamic_cast<Video::VideoView*>(v),
+                        ctx,
                 parent};
         }
 

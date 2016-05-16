@@ -17,11 +17,11 @@ namespace Video
 VideoPresenter::VideoPresenter(
         const LayerModel& layer,
         VideoView* view,
+        const Process::ProcessPresenterContext& ctx,
         QObject* parent):
-    LayerPresenter{"VideoPresenter", parent},
+    LayerPresenter{ctx, parent},
     m_layer{layer},
-    m_view{view},
-    m_focusDispatcher{iscore::IDocument::documentContext(layer).document}
+    m_view{view}
 {
     putToFront();
 
