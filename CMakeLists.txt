@@ -3,6 +3,9 @@ project(iscore_addon_video LANGUAGES CXX)
 
 ###  General initialization of always necessary stuff (AUTOMOC, etc) ###
 iscore_common_setup()
+if(NOT TARGET iscore_plugin_ossia)
+    return()
+endif()
 
 find_package(Qt5 COMPONENTS Multimedia MultimediaWidgets)
 

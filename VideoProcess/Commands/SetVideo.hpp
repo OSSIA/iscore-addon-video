@@ -6,8 +6,8 @@
 #include <VideoProcess/ScaleMode.hpp>
 
 
-class DataStreamInput;
-class DataStreamOutput;
+struct DataStreamInput;
+struct DataStreamOutput;
 namespace Video
 {
 class ProcessModel;
