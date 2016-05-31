@@ -85,10 +85,4 @@ const Id<Process::ProcessModel>& VideoPresenter::modelId() const
     return m_layer.processModel().id();
 }
 
-void VideoPresenter::fillContextMenu(
-        QMenu*,
-        const QPoint&,
-        const QPointF&) const
-{
-}
 }
