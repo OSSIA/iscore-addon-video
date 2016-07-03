@@ -1,7 +1,6 @@
 #pragma once
 #include <Process/LayerView.hpp>
 #include <QString>
-#include <VideoProcess/ScaleMode.hpp>
 #include <QGraphicsVideoItem>
 #include <QMediaPlayer>
 

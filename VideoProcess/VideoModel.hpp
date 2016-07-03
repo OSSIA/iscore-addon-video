@@ -4,7 +4,6 @@
 #include <QByteArray>
 #include <QString>
 
-#include <VideoProcess/ScaleMode.hpp>
 #include <Process/TimeValue.hpp>
 #include <iscore/serialization/VisitorInterface.hpp>
 #include <QUrl>

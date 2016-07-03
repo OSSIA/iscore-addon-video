@@ -3,9 +3,6 @@
 #include <iscore/command/SerializableCommand.hpp>
 #include <iscore/tools/ModelPath.hpp>
 
-#include <VideoProcess/ScaleMode.hpp>
-
-
 struct DataStreamInput;
 struct DataStreamOutput;
 namespace Video
