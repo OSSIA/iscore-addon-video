@@ -57,77 +57,11 @@ QString ProcessModel::prettyName() const
     return metadata.name();
 }
 
-void ProcessModel::setDurationAndScale(const TimeValue& newDuration)
-{
-    // We only need to change the duration.
-    setDuration(newDuration);
-}
-
-void ProcessModel::setDurationAndGrow(const TimeValue& newDuration)
-{
-    setDuration(newDuration);
-}
-
-void ProcessModel::setDurationAndShrink(const TimeValue& newDuration)
-{
-    setDuration(newDuration);
-}
-
-Process::LayerModel* ProcessModel::makeLayer_impl(
-        const Id<Process::LayerModel>& viewModelId,
-        const QByteArray& constructionData,
-        QObject* parent)
-{
-    auto vm = new LayerModel{*this, viewModelId, parent};
-    return vm;
-}
-
-Process::LayerModel* ProcessModel::cloneLayer_impl(
-        const Id<Process::LayerModel>& newId,
-        const Process::LayerModel& source,
-        QObject* parent)
-{
-    auto vm = new LayerModel {
-              static_cast<const LayerModel&>(source), *this, newId, parent};
-    return vm;
-}
-
-ProcessStateDataInterface* ProcessModel::startStateData() const
-{
-    return nullptr;
-}
-
-ProcessStateDataInterface* ProcessModel::endStateData() const
-{
-    return nullptr;
-}
-
-void ProcessModel::startExecution()
-{
-    emit execution(true);
-}
-
 void ProcessModel::stopExecution()
 {
+    // used to stop video on global stop
+    // TODO get rid of this
     emit execution(false);
-}
-
-void ProcessModel::reset()
-{
-}
-
-Selection ProcessModel::selectableChildren() const
-{
-    return {};
-}
-
-Selection ProcessModel::selectedChildren() const
-{
-    return {};
-}
-
-void ProcessModel::setSelection(const Selection& s) const
-{
 }
 }
 

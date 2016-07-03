@@ -51,23 +51,7 @@ class ISCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessMode
 
         QString prettyName() const override;
 
-        Process::LayerModel* makeLayer_impl(
-                const Id<Process::LayerModel>& viewModelId,
-                const QByteArray& constructionData,
-                QObject* parent) override;
-        Process::LayerModel* loadLayer_impl(
-                const VisitorVariant&,
-                QObject* parent) override;
-
-        void setDurationAndScale(const TimeValue& newDuration) override;
-        void setDurationAndGrow(const TimeValue& newDuration) override;
-        void setDurationAndShrink(const TimeValue& newDuration) override;
-
         void serialize_impl(const VisitorVariant& vis) const override;
-
-        /// States
-        ProcessStateDataInterface* startStateData() const override;
-        ProcessStateDataInterface* endStateData() const override;
 
         //// VideoModel specifics ////
         VideoFile file() const
@@ -91,20 +75,9 @@ class ISCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessMode
         ProcessModel(const ProcessModel& source,
                         const Id<Process::ProcessModel>& id,
                         QObject* parent);
-        Process::LayerModel* cloneLayer_impl(
-                const Id<Process::LayerModel>& newId,
-                const Process::LayerModel& source,
-                QObject* parent) override;
 
     private:
-        void startExecution() override;
-        void stopExecution() override;
-        void reset() override;
-
-        Selection selectableChildren() const override;
-        Selection selectedChildren() const override;
-        void setSelection(const Selection& s) const override;
-
+        void stopExecution();
         VideoFile m_video;
 
 };
