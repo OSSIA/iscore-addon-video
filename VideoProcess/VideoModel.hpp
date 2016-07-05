@@ -6,6 +6,8 @@
 
 #include <Process/TimeValue.hpp>
 #include <iscore/serialization/VisitorInterface.hpp>
+
+#include <VideoProcess/VideoProcessMetadata.hpp>
 #include <QUrl>
 
 class DataStream;
@@ -28,6 +30,7 @@ class ISCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessMode
 {
         ISCORE_SERIALIZE_FRIENDS(ProcessModel, DataStream)
         ISCORE_SERIALIZE_FRIENDS(ProcessModel, JSONObject)
+        PROCESS_METADATA_IMPL(Video::ProcessModel)
 
         Q_OBJECT
 
@@ -35,8 +38,6 @@ class ISCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessMode
         ProcessModel(const TimeValue& duration,
                      const Id<Process::ProcessModel>& id,
                      QObject* parent);
-        Process::ProcessModel* clone(const Id<Process::ProcessModel>& newId,
-                            QObject* newParent) const override;
 
         template<typename Impl>
         ProcessModel(Deserializer<Impl>& vis, QObject* parent) :
@@ -44,13 +45,6 @@ class ISCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessMode
         {
             vis.writeTo(*this);
         }
-
-        //// ProcessModel ////
-        UuidKey<Process::ProcessFactory> concreteFactoryKey() const override;
-
-        QString prettyName() const override;
-
-        void serialize_impl(const VisitorVariant& vis) const override;
 
         //// VideoModel specifics ////
         VideoFile file() const
@@ -72,11 +66,11 @@ class ISCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessMode
 
     protected:
         ProcessModel(const ProcessModel& source,
-                        const Id<Process::ProcessModel>& id,
-                        QObject* parent);
+                     const Id<Process::ProcessModel>& id,
+                     QObject* parent);
 
     private:
-        void stopExecution();
+        void stopExecution() override;
         VideoFile m_video;
 
 };

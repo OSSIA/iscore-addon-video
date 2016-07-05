@@ -51,14 +51,3 @@ void Visitor<Writer<JSONObject>>::writeTo(Video::ProcessModel& video)
 
     video.setFile(Video::VideoFile{m_obj["Path"].toString()});
 }
-
-
-// Dynamic stuff
-namespace Video
-{
-void ProcessModel::serialize_impl(const VisitorVariant& vis) const
-{
-    serialize_dyn(vis, *this);
-}
-
-}

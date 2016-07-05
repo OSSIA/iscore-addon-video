@@ -2,8 +2,6 @@
 #include <iscore/document/DocumentInterface.hpp>
 #include <QDebug>
 #include <QPoint>
-
-#include <VideoProcess/VideoProcessMetadata.hpp>
 #include "VideoLayerModel.hpp"
 #include "VideoModel.hpp"
 #include <Process/ModelMetadata.hpp>
@@ -40,23 +38,6 @@ ProcessModel::ProcessModel(
     metadata.setName(QString("Video.%1").arg(*this->id().val()));
 }
 
-Process::ProcessModel* ProcessModel::clone(
-        const Id<Process::ProcessModel>& newId,
-        QObject* newParent) const
-{
-    return new ProcessModel {*this, newId, newParent};
-}
-
-UuidKey<Process::ProcessFactory>ProcessModel::concreteFactoryKey() const
-{
-    return Metadata<ConcreteFactoryKey_k, ProcessModel>::get();
-}
-
-QString ProcessModel::prettyName() const
-{
-    return metadata.name();
-}
-
 void ProcessModel::stopExecution()
 {
     // used to stop video on global stop
@@ -71,8 +52,6 @@ namespace Video
 {
 namespace Executor
 {
-
-
 ProcessExecutor::ProcessExecutor(ProcessModel& video):
     m_player{video}
 {
