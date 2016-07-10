@@ -112,9 +112,7 @@ class Component final :
                 const Id<iscore::Component>& id,
                 QObject* parent);
 };
-
-EXECUTOR_PROCESS_COMPONENT_FACTORY(ComponentFactory, "9a8f11ca-f0a8-49f9-b0be-8e5dda58523e", Component, Video::ProcessModel)
-
+using ComponentFactory = ::RecreateOnPlay::ProcessComponentFactory_T<Component>;
 }
 }
 

@@ -14,7 +14,7 @@ namespace Video
 {
 class InspectorFactory final : public Process::InspectorWidgetDelegateFactory
 {
-        ISCORE_CONCRETE_FACTORY_DECL("4747cece-dfd8-40c3-b83c-094abbf06f71")
+        ISCORE_CONCRETE_FACTORY("4747cece-dfd8-40c3-b83c-094abbf06f71")
     public:
         InspectorFactory() = default;
 
