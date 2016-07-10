@@ -1,6 +1,7 @@
 #pragma once
 #include <Process/Process.hpp>
 #include <State/Address.hpp>
+#include <VideoProcess/VideoModel.hpp>
 #include <QByteArray>
 #include <QString>
 
@@ -99,41 +100,20 @@ class ProcessExecutor final :
 };
 
 
-class ProcessComponent final : public RecreateOnPlay::ProcessComponent
+class Component final :
+        public ::RecreateOnPlay::ProcessComponent_T<Video::ProcessModel>
 {
+        COMPONENT_METADATA("a8829dcd-09a9-48e5-bd47-8e0164eef2a5")
     public:
-        ProcessComponent(
+        Component(
                 RecreateOnPlay::ConstraintElement& parentConstraint,
                 ProcessModel& element,
                 const RecreateOnPlay::Context& ctx,
                 const Id<iscore::Component>& id,
                 QObject* parent);
-
-    private:
-        const Key &key() const override;
 };
 
-
-class ProcessComponentFactory final :
-        public RecreateOnPlay::ProcessComponentFactory
-{
-    public:
-        virtual ~ProcessComponentFactory();
-
-        virtual RecreateOnPlay::ProcessComponent* make(
-                RecreateOnPlay::ConstraintElement& cst,
-                Process::ProcessModel& proc,
-                const RecreateOnPlay::Context& ctx,
-                const Id<iscore::Component>& id,
-                QObject* parent) const override;
-
-        const ConcreteFactoryKey& concreteFactoryKey() const override;
-
-        bool matches(
-                Process::ProcessModel& proc,
-                const RecreateOnPlay::DocumentPlugin&) const override;
-};
-
+EXECUTOR_PROCESS_COMPONENT_FACTORY(ComponentFactory, "9a8f11ca-f0a8-49f9-b0be-8e5dda58523e", Component, Video::ProcessModel)
 
 }
 }
