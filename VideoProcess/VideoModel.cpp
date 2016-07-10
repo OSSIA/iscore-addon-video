@@ -1,6 +1,7 @@
 #include <iscore/tools/std/Optional.hpp>
 #include <iscore/document/DocumentInterface.hpp>
 #include <QDebug>
+#include <Editor/State.h>
 #include <QPoint>
 #include "VideoLayerModel.hpp"
 #include "VideoModel.hpp"
