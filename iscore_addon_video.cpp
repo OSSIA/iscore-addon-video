@@ -65,6 +65,6 @@ iscore::Version iscore_addon_video::version() const
 
 UuidKey<iscore::Plugin> iscore_addon_video::key() const
 {
-    return "5f2cd9ce-5744-467a-a53a-beb0e8c10ebe";
+    return_uuid("5f2cd9ce-5744-467a-a53a-beb0e8c10ebe");
 }
 
