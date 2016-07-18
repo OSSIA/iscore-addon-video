@@ -33,11 +33,11 @@ void Visitor<Writer<DataStream>>::writeTo(Video::ProcessModel& video)
 template<>
 void Visitor<Reader<JSONObject>>::readFrom_impl(const Video::ProcessModel& video)
 {
-    m_obj["Path"] = video.file().path;
+    m_obj[iscore::StringConstant().Path] = video.file().path;
 }
 
 template<>
 void Visitor<Writer<JSONObject>>::writeTo(Video::ProcessModel& video)
 {
-    video.setFile(Video::VideoFile{m_obj["Path"].toString()});
+    video.setFile(Video::VideoFile{m_obj[iscore::StringConstant().Path].toString()});
 }
