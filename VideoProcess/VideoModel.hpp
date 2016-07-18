@@ -31,7 +31,7 @@ class ISCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessMode
 {
         ISCORE_SERIALIZE_FRIENDS(ProcessModel, DataStream)
         ISCORE_SERIALIZE_FRIENDS(ProcessModel, JSONObject)
-        PROCESS_METADATA_IMPL(Video::ProcessModel)
+        MODEL_METADATA_IMPL(Video::ProcessModel)
 
         Q_OBJECT
 
