@@ -53,14 +53,14 @@ ProcessExecutor::ProcessExecutor(ProcessModel& video):
 {
 }
 
-std::shared_ptr<OSSIA::StateElement> ProcessExecutor::state()
+OSSIA::StateElement ProcessExecutor::state()
 {
     return state(parent->getPosition());
 }
 
-std::shared_ptr<OSSIA::StateElement> ProcessExecutor::state(double t)
+OSSIA::StateElement ProcessExecutor::state(double t)
 {
-    auto st = OSSIA::State::create();
+    // TODO instead use associated states processes to start and stop them.
     if(t == 0)
     {
         m_player.play();
@@ -69,10 +69,10 @@ std::shared_ptr<OSSIA::StateElement> ProcessExecutor::state(double t)
     {
         m_player.stop();
     }
-    return st;
+    return {};
 }
 
-std::shared_ptr<OSSIA::StateElement> ProcessExecutor::offset(
+OSSIA::StateElement ProcessExecutor::offset(
         OSSIA::TimeValue off)
 {
     return state(off / parent->getDurationNominal());

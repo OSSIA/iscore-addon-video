@@ -91,9 +91,9 @@ class ProcessExecutor final :
     public:
         ProcessExecutor(ProcessModel& video);
 
-        std::shared_ptr<OSSIA::StateElement> state(double);
-        std::shared_ptr<OSSIA::StateElement> state() override;
-        std::shared_ptr<OSSIA::StateElement> offset(OSSIA::TimeValue) override;
+        OSSIA::StateElement state(double);
+        OSSIA::StateElement state() override;
+        OSSIA::StateElement offset(OSSIA::TimeValue) override;
 
     private:
         ProcessModel& m_player;
