@@ -1,7 +1,7 @@
 #include <iscore/tools/std/Optional.hpp>
 #include <iscore/document/DocumentInterface.hpp>
 #include <QDebug>
-#include <Editor/State.h>
+#include <ossia/editor/state/state_element.hpp>
 #include <QPoint>
 #include "VideoLayerModel.hpp"
 #include "VideoModel.hpp"
@@ -42,7 +42,7 @@ void ProcessModel::stopExecution()
 }
 }
 
-#include <Editor/TimeConstraint.h>
+#include <ossia/editor/scenario/time_constraint.hpp>
 // MOVEME
 namespace Video
 {
@@ -53,12 +53,12 @@ ProcessExecutor::ProcessExecutor(ProcessModel& video):
 {
 }
 
-OSSIA::StateElement ProcessExecutor::state()
+ossia::state_element ProcessExecutor::state()
 {
     return state(parent->getPosition());
 }
 
-OSSIA::StateElement ProcessExecutor::state(double t)
+ossia::state_element ProcessExecutor::state(double t)
 {
     // TODO instead use associated states processes to start and stop them.
     if(t == 0)
@@ -72,8 +72,8 @@ OSSIA::StateElement ProcessExecutor::state(double t)
     return {};
 }
 
-OSSIA::StateElement ProcessExecutor::offset(
-        OSSIA::TimeValue off)
+ossia::state_element ProcessExecutor::offset(
+        ossia::time_value off)
 {
     return state(off / parent->getDurationNominal());
 }
@@ -84,9 +84,9 @@ Component::Component(
         const ::RecreateOnPlay::Context& ctx,
         const Id<iscore::Component>& id,
         QObject* parent):
-    ::RecreateOnPlay::ProcessComponent_T<Video::ProcessModel>{parentConstraint, element, ctx, id, "VideoComponent", parent}
+    ::RecreateOnPlay::ProcessComponent_T<Video::ProcessModel, ProcessExecutor>{parentConstraint, element, ctx, id, "VideoComponent", parent}
 {
-    auto proc = std::make_shared<ProcessExecutor>(element);
+    auto proc = new ProcessExecutor(element);
     m_ossia_process = proc;
 }
 }

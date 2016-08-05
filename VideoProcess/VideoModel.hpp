@@ -78,22 +78,22 @@ class ISCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessMode
 }
 #include <QMediaPlayer>
 #include <OSSIA/Executor/ProcessElement.hpp>
-#include <Editor/TimeValue.h>
-#include <Editor/TimeProcess.h>
+#include <ossia/editor/scenario/time_value.hpp>
+#include <ossia/editor/scenario/time_process.hpp>
 // MOVEME
 namespace Video
 {
 namespace Executor
 {
 class ProcessExecutor final :
-        public OSSIA::TimeProcess
+        public ossia::time_process
 {
     public:
         ProcessExecutor(ProcessModel& video);
 
-        OSSIA::StateElement state(double);
-        OSSIA::StateElement state() override;
-        OSSIA::StateElement offset(OSSIA::TimeValue) override;
+        ossia::state_element state(double);
+        ossia::state_element state() override;
+        ossia::state_element offset(ossia::time_value) override;
 
     private:
         ProcessModel& m_player;
@@ -101,7 +101,7 @@ class ProcessExecutor final :
 
 
 class Component final :
-        public ::RecreateOnPlay::ProcessComponent_T<Video::ProcessModel>
+        public ::RecreateOnPlay::ProcessComponent_T<Video::ProcessModel, Video::Executor::ProcessExecutor>
 {
         COMPONENT_METADATA("a8829dcd-09a9-48e5-bd47-8e0164eef2a5")
     public:
