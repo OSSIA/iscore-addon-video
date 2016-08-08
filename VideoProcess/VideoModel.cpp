@@ -79,12 +79,12 @@ ossia::state_element ProcessExecutor::offset(
 }
 
 Component::Component(
-        ::RecreateOnPlay::ConstraintElement& parentConstraint,
+        ::Engine::Execution::ConstraintElement& parentConstraint,
         ProcessModel& element,
-        const ::RecreateOnPlay::Context& ctx,
+        const ::Engine::Execution::Context& ctx,
         const Id<iscore::Component>& id,
         QObject* parent):
-    ::RecreateOnPlay::ProcessComponent_T<Video::ProcessModel, ProcessExecutor>{parentConstraint, element, ctx, id, "VideoComponent", parent}
+    ::Engine::Execution::ProcessComponent_T<Video::ProcessModel, ProcessExecutor>{parentConstraint, element, ctx, id, "VideoComponent", parent}
 {
     auto proc = new ProcessExecutor(element);
     m_ossia_process = proc;

@@ -3,7 +3,7 @@ project(iscore_addon_video LANGUAGES CXX)
 
 ###  General initialization of always necessary stuff (AUTOMOC, etc) ###
 iscore_common_setup()
-if(NOT TARGET iscore_plugin_ossia)
+if(NOT TARGET iscore_plugin_engine)
     return()
 endif()
 
@@ -48,7 +48,7 @@ add_library(${PROJECT_NAME} ${SRCS} ${HDRS} ${QRCS})
 ### If there are commands this will generate the files showcased in iscore_plugin_video.cpp ###
 iscore_generate_command_list_file(${PROJECT_NAME} "${HDRS}")
 
-target_link_libraries(${PROJECT_NAME} PUBLIC iscore_lib_process iscore_plugin_ossia Qt5::Multimedia Qt5::MultimediaWidgets)
+target_link_libraries(${PROJECT_NAME} PUBLIC iscore_lib_process iscore_plugin_engine Qt5::Multimedia Qt5::MultimediaWidgets)
 
 if(TARGET iscore_lib_inspector)
     target_link_libraries(${PROJECT_NAME} PUBLIC iscore_lib_inspector)

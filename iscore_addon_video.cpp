@@ -40,7 +40,7 @@ std::vector<std::unique_ptr<iscore::FactoryInterfaceBase>> iscore_addon_video::f
              Video::ProcessFactory>,
         FW<Process::InspectorWidgetDelegateFactory,
              Video::InspectorFactory>,
-        FW<RecreateOnPlay::ProcessComponentFactory,
+        FW<Engine::Execution::ProcessComponentFactory,
              Video::Executor::ComponentFactory>
     >>(ctx, key);
 }
