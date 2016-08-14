@@ -41,6 +41,5 @@ class VideoPresenter final :
     private:
         const LayerModel& m_layer;
         VideoView* m_view{};
-        FocusDispatcher m_focusDispatcher;
 };
 }
