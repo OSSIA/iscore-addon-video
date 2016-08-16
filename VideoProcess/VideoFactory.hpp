@@ -10,7 +10,7 @@ namespace Video
 
 using ProcessFactory = Process::GenericProcessFactory<
     Video::ProcessModel,
-    Video::LayerModel,
+    Video::Layer,
     Video::VideoPresenter,
     Video::VideoView>;
 

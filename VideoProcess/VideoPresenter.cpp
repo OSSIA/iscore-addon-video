@@ -15,7 +15,7 @@ class QObject;
 namespace Video
 {
 VideoPresenter::VideoPresenter(
-        const LayerModel& layer,
+        const Layer& layer,
         VideoView* view,
         const Process::ProcessPresenterContext& ctx,
         QObject* parent):
