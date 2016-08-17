@@ -25,7 +25,7 @@ VideoPresenter::VideoPresenter(
 {
     putToFront();
 
-    auto& model = layer.model();
+    auto& model = layer.processModel();
     con(model.metadata, &ModelMetadata::nameChanged,
             this, [&] (QString s)
     {
@@ -34,7 +34,7 @@ VideoPresenter::VideoPresenter(
 
     con(model, &ProcessModel::videoChanged,
         this, [&] ( ) {
-        m_view->setVideo(m_layer.model().file().path);
+        m_view->setVideo(m_layer.processModel().file().path);
     });
 
     con(model, &ProcessModel::play, this, [=] { view->player.play(); });

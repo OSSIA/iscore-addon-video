@@ -1,19 +1,14 @@
 #pragma once
 #include <Process/LayerPresenter.hpp>
+#include <VideoProcess/VideoLayerModel.hpp>
 #include <QPoint>
 
 #include <Process/ZoomHelper.hpp>
 #include <iscore/tools/SettableIdentifier.hpp>
 #include <Process/Focus/FocusDispatcher.hpp>
 
-namespace Process { class LayerModel; }
-namespace Process { class ProcessModel; }
-class QMenu;
-class QObject;
-
 namespace Video
 {
-class Layer;
 class VideoView;
 class VideoPresenter final :
         public Process::LayerPresenter

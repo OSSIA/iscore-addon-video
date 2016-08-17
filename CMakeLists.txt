@@ -15,12 +15,10 @@ file(GLOB_RECURSE HDRS
 )
 set(SRCS
 "${CMAKE_CURRENT_SOURCE_DIR}/VideoProcess/VideoSerialization.cpp"
-"${CMAKE_CURRENT_SOURCE_DIR}/VideoProcess/VideoLayerSerialization.cpp"
 
 "${CMAKE_CURRENT_SOURCE_DIR}/VideoProcess/VideoModel.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/VideoProcess/VideoPresenter.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/VideoProcess/VideoView.cpp"
-"${CMAKE_CURRENT_SOURCE_DIR}/VideoProcess/VideoLayerModel.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/VideoProcess/VideoPanelProxy.cpp"
 
 "${CMAKE_CURRENT_SOURCE_DIR}/VideoProcess/Commands/SetVideo.cpp"
