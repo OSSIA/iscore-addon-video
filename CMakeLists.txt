@@ -24,22 +24,10 @@ set(SRCS
 "${CMAKE_CURRENT_SOURCE_DIR}/VideoProcess/Commands/SetVideo.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/VideoProcess/Commands/VideoCommandFactory.cpp"
 
+"${CMAKE_CURRENT_SOURCE_DIR}/VideoProcess/Inspector/VideoInspectorWidget.cpp"
+
 "${CMAKE_CURRENT_SOURCE_DIR}/iscore_addon_video.cpp"
 )
-
-if(TARGET iscore_lib_inspector)
-    set(INSPECTOR_SRCS
-"${CMAKE_CURRENT_SOURCE_DIR}/VideoProcess/Inspector/VideoInspectorFactory.cpp"
-"${CMAKE_CURRENT_SOURCE_DIR}/VideoProcess/Inspector/VideoInspectorWidget.cpp"
-    )
-
-    set(SRCS ${SRCS} ${INSPECTOR_SRCS})
-
-    file(GLOB_RECURSE INSPECTOR_HDRS
-        "${CMAKE_CURRENT_SOURCE_DIR}/VideoProcess/Inspector/*.hpp")
-
-    set(HDRS ${HDRS} ${INSPECTOR_HDRS})
-endif()
 
 add_library(${PROJECT_NAME} ${SRCS} ${HDRS} ${QRCS})
 
@@ -47,10 +35,6 @@ add_library(${PROJECT_NAME} ${SRCS} ${HDRS} ${QRCS})
 iscore_generate_command_list_file(${PROJECT_NAME} "${HDRS}")
 
 target_link_libraries(${PROJECT_NAME} PUBLIC iscore_lib_process iscore_plugin_engine Qt5::Multimedia Qt5::MultimediaWidgets)
-
-if(TARGET iscore_lib_inspector)
-    target_link_libraries(${PROJECT_NAME} PUBLIC iscore_lib_inspector)
-endif()
 
 ### Setup of the target ###
 setup_iscore_plugin(${PROJECT_NAME})
