@@ -11,9 +11,7 @@
 #include <iscore/plugins/customfactory/FactorySetup.hpp>
 #include "iscore_addon_video.hpp"
 
-#if defined(ISCORE_LIB_INSPECTOR)
 #include <VideoProcess/Inspector/VideoInspectorFactory.hpp>
-#endif
 
 #include <iscore_addon_video_commands_files.hpp>
 #include <VideoProcess/VideoFactory.hpp>
