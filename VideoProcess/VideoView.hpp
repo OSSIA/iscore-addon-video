@@ -20,7 +20,15 @@ class VideoView final : public Process::LayerView
 
 
         QMediaPlayer player;
+
+        QGraphicsVideoItem* videoItem{};
+        QDialog* videoDialog{};
+
     private:
         void paint_impl(QPainter*) const override;
+
+        void mousePressEvent(QGraphicsSceneMouseEvent* event) override;
+        void mouseDoubleClickEvent(QGraphicsSceneMouseEvent* event) override;
+
 };
 }

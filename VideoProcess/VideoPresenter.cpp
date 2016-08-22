@@ -39,6 +39,7 @@ VideoPresenter::VideoPresenter(
 
     con(model, &ProcessModel::play, this, [=] { view->player.play(); });
     con(model, &ProcessModel::pause, this, [=] { view->player.pause(); });
+    con(model, &ProcessModel::resume, this, [=] { view->player.play(); });
     con(model, &ProcessModel::stop, this, [=] { view->player.stop(); });
     con(model, &ProcessModel::seek, this, [=] (auto pos) { view->player.setPosition(pos); });
     con(model, &ProcessModel::setSpeed, this, [=] (auto rate) { view->player.setPlaybackRate(rate); });

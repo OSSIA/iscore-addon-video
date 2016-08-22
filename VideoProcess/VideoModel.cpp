@@ -38,6 +38,7 @@ void ProcessModel::stopExecution()
 {
     // used to stop video on global stop
     // TODO get rid of this
+    qDebug("dem stops");
     emit execution(false);
 }
 }
@@ -55,27 +56,34 @@ ProcessExecutor::ProcessExecutor(ProcessModel& video):
 
 ossia::state_element ProcessExecutor::state()
 {
-    return state(parent->getPosition());
+    return {};
 }
 
-ossia::state_element ProcessExecutor::state(double t)
+void ProcessExecutor::start()
 {
-    // TODO instead use associated states processes to start and stop them.
-    if(t == 0)
-    {
-        m_player.play();
-    }
-    else if(t >= 1)
-    {
-        m_player.stop();
-    }
-    return {};
+    m_player.play();
+}
+
+void ProcessExecutor::stop()
+{
+    m_player.stop();
+}
+
+void ProcessExecutor::pause()
+{
+    m_player.pause();
+}
+
+void ProcessExecutor::resume()
+{
+    m_player.resume();
 }
 
 ossia::state_element ProcessExecutor::offset(
         ossia::time_value off)
 {
-    return state(off / parent->getDurationNominal());
+    m_player.seek(off);
+    return {};
 }
 
 Component::Component(

@@ -61,9 +61,10 @@ class ISCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessMode
 
         void play();
         void pause();
+        void resume();
+        void stop();
         void setSpeed(double speed);
         void seek(qint64 pos);
-        void stop();
 
     protected:
         ProcessModel(const ProcessModel& source,
@@ -91,7 +92,10 @@ class ProcessExecutor final :
     public:
         ProcessExecutor(ProcessModel& video);
 
-        ossia::state_element state(double);
+        void start() override;
+        void stop() override;
+        void pause() override;
+        void resume() override;
         ossia::state_element state() override;
         ossia::state_element offset(ossia::time_value) override;
 
