@@ -15,7 +15,7 @@
 namespace Video
 {
 
-struct VideoDialog : public QDialog
+struct VideoDialog final : public QDialog
 {
         VideoView& view;
 
@@ -32,7 +32,7 @@ struct VideoDialog : public QDialog
             view.player.setVideoOutput(widg);
         }
 
-        void closeEvent(QCloseEvent * ev)
+        void closeEvent(QCloseEvent * ev) override
         {
             view.videoItem = new QGraphicsVideoItem{&view};
             view.player.setVideoOutput(view.videoItem);
@@ -47,7 +47,7 @@ VideoView::VideoView(
 {
     videoItem = new QGraphicsVideoItem{this};
     player.setVideoOutput(videoItem);
-    //player.setMuted(true);
+    //player.setMuted(true); // TODO settings
 
 }
 

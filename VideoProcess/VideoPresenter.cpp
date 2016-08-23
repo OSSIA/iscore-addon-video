@@ -26,7 +26,7 @@ VideoPresenter::VideoPresenter(
     putToFront();
 
     auto& model = layer.processModel();
-    con(model.metadata, &ModelMetadata::nameChanged,
+    con(model.metadata, &ModelMetadata::NameChanged,
             this, [&] (QString s)
     {
         putToFront();
