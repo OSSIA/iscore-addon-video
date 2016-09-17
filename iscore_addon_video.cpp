@@ -34,8 +34,10 @@ std::vector<std::unique_ptr<iscore::FactoryInterfaceBase>> iscore_addon_video::f
     return instantiate_factories<
             iscore::ApplicationContext,
     TL<
-        FW<Process::ProcessFactory,
-             Video::ProcessFactory>,
+        FW<Process::ProcessModelFactory,
+           Video::ProcessFactory>,
+        FW<Process::LayerFactory,
+            Video::LayerFactory>,
         FW<Process::InspectorWidgetDelegateFactory,
              Video::InspectorFactory>,
         FW<Engine::Execution::ProcessComponentFactory,

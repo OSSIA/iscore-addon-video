@@ -7,4 +7,10 @@ namespace Video
 using Layer = Process::LayerModel_T<ProcessModel>;
 }
 
-DEFAULT_MODEL_METADATA(Video::Layer, "VideoLayer")
+LAYER_METADATA(
+        ,
+        Video::Layer,
+        "8a28108c-4a22-4576-a320-bcea75289ce4",
+        "VideoLayer",
+        "VideoLayer"
+        )
