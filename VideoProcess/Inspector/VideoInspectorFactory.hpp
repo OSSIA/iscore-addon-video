@@ -8,6 +8,6 @@ namespace Video
 class InspectorFactory final :
         public Process::InspectorWidgetDelegateFactory_T<ProcessModel, InspectorWidget>
 {
-        ISCORE_CONCRETE_FACTORY("4747cece-dfd8-40c3-b83c-094abbf06f71")
+        ISCORE_CONCRETE("4747cece-dfd8-40c3-b83c-094abbf06f71")
 };
 }
