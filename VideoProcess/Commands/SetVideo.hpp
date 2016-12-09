@@ -1,6 +1,6 @@
 #pragma once
 #include <VideoProcess/Commands/VideoCommandFactory.hpp>
-#include <iscore/command/SerializableCommand.hpp>
+#include <iscore/command/Command.hpp>
 #include <iscore/tools/ModelPath.hpp>
 
 struct DataStreamInput;
@@ -9,7 +9,7 @@ namespace Video
 {
 class ProcessModel;
 
-class SetVideo final : public iscore::SerializableCommand
+class SetVideo final : public iscore::Command
 {
         ISCORE_COMMAND_DECL(Video::CommandFactoryName(), SetVideo, "Set a video")
     public:
