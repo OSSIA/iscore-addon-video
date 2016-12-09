@@ -3,8 +3,8 @@
 
 namespace Video
 {
-const CommandParentFactoryKey& CommandFactoryName() {
-    static const CommandParentFactoryKey key{"Video"};
+const CommandGroupKey& CommandFactoryName() {
+    static const CommandGroupKey key{"Video"};
     return key;
 }
 }

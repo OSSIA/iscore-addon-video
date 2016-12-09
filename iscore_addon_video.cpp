@@ -45,10 +45,10 @@ std::vector<std::unique_ptr<iscore::InterfaceBase>> iscore_addon_video::factorie
     >>(ctx, key);
 }
 
-std::pair<const CommandParentFactoryKey, CommandGeneratorMap> iscore_addon_video::make_commands()
+std::pair<const CommandGroupKey, CommandGeneratorMap> iscore_addon_video::make_commands()
 {
     using namespace Video;
-    std::pair<const CommandParentFactoryKey, CommandGeneratorMap> cmds{CommandFactoryName(), CommandGeneratorMap{}};
+    std::pair<const CommandGroupKey, CommandGeneratorMap> cmds{CommandFactoryName(), CommandGeneratorMap{}};
 
     using Types = TypeList<
 #include <iscore_addon_video_commands.hpp>

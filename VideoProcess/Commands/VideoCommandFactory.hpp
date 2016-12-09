@@ -3,5 +3,5 @@
 
 namespace Video
 {
-const CommandParentFactoryKey& CommandFactoryName();
+const CommandGroupKey& CommandFactoryName();
 }
