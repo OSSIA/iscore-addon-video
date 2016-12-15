@@ -6,8 +6,8 @@
 #include "VideoLayerModel.hpp"
 #include "VideoModel.hpp"
 #include <iscore/model/ModelMetadata.hpp>
-#include <iscore/tools/IdentifiedObjectMap.hpp>
-#include <iscore/tools/SettableIdentifier.hpp>
+#include <iscore/model/IdentifiedObjectMap.hpp>
+#include <iscore/model/Identifier.hpp>
 
 namespace Process { class LayerModel; }
 namespace Process { class ProcessModel; }

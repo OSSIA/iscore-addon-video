@@ -2,7 +2,7 @@
 
 #include "SetVideo.hpp"
 #include <iscore/serialization/DataStreamVisitor.hpp>
-#include <iscore/tools/ModelPathSerialization.hpp>
+#include <iscore/model/path/PathSerialization.hpp>
 namespace Video
 {
 SetVideo::SetVideo(

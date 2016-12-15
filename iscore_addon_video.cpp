@@ -33,7 +33,6 @@ std::vector<std::unique_ptr<iscore::InterfaceBase>> iscore_addon_video::factorie
 {
     return instantiate_factories<
             iscore::ApplicationContext,
-    TL<
         FW<Process::ProcessModelFactory,
            Video::ProcessFactory>,
         FW<Process::LayerFactory,
@@ -42,7 +41,7 @@ std::vector<std::unique_ptr<iscore::InterfaceBase>> iscore_addon_video::factorie
              Video::InspectorFactory>,
         FW<Engine::Execution::ProcessComponentFactory,
              Video::Executor::ComponentFactory>
-    >>(ctx, key);
+    >(ctx, key);
 }
 
 std::pair<const CommandGroupKey, CommandGeneratorMap> iscore_addon_video::make_commands()
