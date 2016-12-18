@@ -25,7 +25,7 @@ class iscore_addon_video final :
                 iscore::FactoryInterface_QtInterface
                 iscore::CommandFactory_QtInterface
                 )
-
+  ISCORE_PLUGIN_METADATA(1, "5f2cd9ce-5744-467a-a53a-beb0e8c10ebe")
     public:
         iscore_addon_video();
         virtual ~iscore_addon_video();
@@ -38,7 +38,4 @@ class iscore_addon_video final :
 
         // CommandFactory_QtInterface interface
         std::pair<const CommandGroupKey, CommandGeneratorMap> make_commands() override;
-
-        iscore::Version version() const override;
-        UuidKey<iscore::Plugin> key() const override;
 };

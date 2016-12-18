@@ -56,14 +56,3 @@ std::pair<const CommandGroupKey, CommandGeneratorMap> iscore_addon_video::make_c
 
     return cmds;
 }
-
-iscore::Version iscore_addon_video::version() const
-{
-    return iscore::Version{1};
-}
-
-UuidKey<iscore::Plugin> iscore_addon_video::key() const
-{
-    return_uuid("5f2cd9ce-5744-467a-a53a-beb0e8c10ebe");
-}
-
