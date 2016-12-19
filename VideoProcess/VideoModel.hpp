@@ -78,7 +78,7 @@ class ISCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessMode
 };
 }
 #include <QMediaPlayer>
-#include <Engine/Executor/ProcessElement.hpp>
+#include <Engine/Executor/ProcessComponent.hpp>
 #include <ossia/editor/scenario/time_value.hpp>
 #include <ossia/editor/scenario/time_process.hpp>
 // MOVEME
