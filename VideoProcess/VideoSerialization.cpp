@@ -10,16 +10,16 @@
 #include <iscore/serialization/JSONValueVisitor.hpp>
 #include <iscore/serialization/VisitorCommon.hpp>
 
-template<>
-void Visitor<Reader<DataStream>>::readFrom_impl(const Video::ProcessModel& video)
+template <>
+void DataStreamReader::read(const Video::ProcessModel& video)
 {
     m_stream << video.file().path;
 
     insertDelimiter();
 }
 
-template<>
-void Visitor<Writer<DataStream>>::writeTo(Video::ProcessModel& video)
+template <>
+void DataStreamWriter::writeTo(Video::ProcessModel& video)
 {
     QString path;
     m_stream >> path;
@@ -29,14 +29,14 @@ void Visitor<Writer<DataStream>>::writeTo(Video::ProcessModel& video)
     checkDelimiter();
 }
 
-template<>
-void Visitor<Reader<JSONObject>>::readFrom_impl(const Video::ProcessModel& video)
+template <>
+void JSONObjectReader::read(const Video::ProcessModel& video)
 {
-    m_obj[strings.Path] = video.file().path;
+    obj[strings.Path] = video.file().path;
 }
 
-template<>
-void Visitor<Writer<JSONObject>>::writeTo(Video::ProcessModel& video)
+template <>
+void JSONObjectWriter::writeTo(Video::ProcessModel& video)
 {
-    video.setFile(Video::VideoFile{m_obj[strings.Path].toString()});
+    video.setFile(Video::VideoFile{obj[strings.Path].toString()});
 }

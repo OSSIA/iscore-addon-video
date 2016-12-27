@@ -29,8 +29,7 @@ struct VideoFile
 
 class ISCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessModel
 {
-        ISCORE_SERIALIZE_FRIENDS(ProcessModel, DataStream)
-        ISCORE_SERIALIZE_FRIENDS(ProcessModel, JSONObject)
+        ISCORE_SERIALIZE_FRIENDS
         MODEL_METADATA_IMPL(Video::ProcessModel)
 
         Q_OBJECT
@@ -41,7 +40,7 @@ class ISCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessMode
                      QObject* parent);
 
         template<typename Impl>
-        ProcessModel(Deserializer<Impl>& vis, QObject* parent) :
+        ProcessModel(Impl& vis, QObject* parent) :
             Process::ProcessModel{vis, parent}
         {
             vis.writeTo(*this);
