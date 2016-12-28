@@ -19,7 +19,7 @@ void DataStreamReader::read(const Video::ProcessModel& video)
 }
 
 template <>
-void DataStreamWriter::writeTo(Video::ProcessModel& video)
+void DataStreamWriter::write(Video::ProcessModel& video)
 {
     QString path;
     m_stream >> path;
@@ -36,7 +36,7 @@ void JSONObjectReader::read(const Video::ProcessModel& video)
 }
 
 template <>
-void JSONObjectWriter::writeTo(Video::ProcessModel& video)
+void JSONObjectWriter::write(Video::ProcessModel& video)
 {
     video.setFile(Video::VideoFile{obj[strings.Path].toString()});
 }
