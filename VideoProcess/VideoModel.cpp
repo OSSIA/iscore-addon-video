@@ -61,6 +61,8 @@ ossia::state_element ProcessExecutor::state()
 
 void ProcessExecutor::start()
 {
+  // TODO we should play the video and hide it if it is muted.
+  if(unmuted())
     m_player.play();
 }
 
