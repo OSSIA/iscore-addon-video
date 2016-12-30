@@ -109,7 +109,7 @@ class Component final :
         COMPONENT_METADATA("a8829dcd-09a9-48e5-bd47-8e0164eef2a5")
     public:
         Component(
-                Engine::Execution::ConstraintElement& parentConstraint,
+                Engine::Execution::ConstraintComponent& parentConstraint,
                 ProcessModel& element,
                 const Engine::Execution::Context& ctx,
                 const Id<iscore::Component>& id,

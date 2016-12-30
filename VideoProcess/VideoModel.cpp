@@ -89,7 +89,7 @@ ossia::state_element ProcessExecutor::offset(
 }
 
 Component::Component(
-        ::Engine::Execution::ConstraintElement& parentConstraint,
+        ::Engine::Execution::ConstraintComponent& parentConstraint,
         ProcessModel& element,
         const ::Engine::Execution::Context& ctx,
         const Id<iscore::Component>& id,
