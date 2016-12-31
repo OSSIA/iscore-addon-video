@@ -96,7 +96,7 @@ Component::Component(
         QObject* parent):
     ::Engine::Execution::ProcessComponent_T<Video::ProcessModel, ProcessExecutor>{parentConstraint, element, ctx, id, "VideoComponent", parent}
 {
-    auto proc = new ProcessExecutor(element);
+    auto proc = std::make_shared<ProcessExecutor>(element);
     m_ossia_process = proc;
 }
 }
