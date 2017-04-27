@@ -14,10 +14,9 @@ using ProcessFactory = Process::GenericProcessModelFactory<
 
 using LayerFactory = Process::GenericLayerFactory<
 Video::ProcessModel,
-Video::Layer,
 Video::VideoPresenter,
 Video::VideoView,
-Process::GraphicsViewLayerModelPanelProxy>;
+Process::GraphicsViewLayerPanelProxy>;
 
 }
 

@@ -35,8 +35,6 @@ std::vector<std::unique_ptr<iscore::InterfaceBase>> iscore_addon_video::factorie
             iscore::ApplicationContext,
         FW<Process::ProcessModelFactory,
            Video::ProcessFactory>,
-        FW<Process::LayerFactory,
-            Video::LayerFactory>,
         FW<Process::InspectorWidgetDelegateFactory,
              Video::InspectorFactory>,
         FW<Engine::Execution::ProcessComponentFactory,

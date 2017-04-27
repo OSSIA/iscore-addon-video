@@ -10,12 +10,13 @@
 namespace Video
 {
 class VideoView;
+class ProcessModel;
 class VideoPresenter final :
         public Process::LayerPresenter
 {
     public:
         explicit VideoPresenter(
-                const Layer& model,
+                const ProcessModel& model,
                 VideoView* view,
                 const Process::ProcessPresenterContext& ctx,
                 QObject* parent);
@@ -30,11 +31,11 @@ class VideoPresenter final :
 
         void parentGeometryChanged() override;
 
-        const Process::LayerModel& layerModel() const override;
+        const Process::ProcessModel& model() const override;
         const Id<Process::ProcessModel>& modelId() const override;
 
     private:
-        const Layer& m_layer;
+        const ProcessModel& m_layer;
         VideoView* m_view{};
 };
 }

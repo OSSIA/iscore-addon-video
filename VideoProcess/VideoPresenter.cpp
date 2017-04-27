@@ -1,4 +1,4 @@
-#include <Process/LayerModel.hpp>
+
 #include <Process/Process.hpp>
 
 #include "VideoPresenter.hpp"
@@ -15,17 +15,16 @@ class QObject;
 namespace Video
 {
 VideoPresenter::VideoPresenter(
-        const Layer& layer,
+        const ProcessModel& model,
         VideoView* view,
         const Process::ProcessPresenterContext& ctx,
         QObject* parent):
     LayerPresenter{ctx, parent},
-    m_layer{layer},
+    m_layer{model},
     m_view{view}
 {
     putToFront();
 
-    auto& model = layer.processModel();
     con(model.metadata(), &iscore::ModelMetadata::NameChanged,
             this, [&] (QString s)
     {
@@ -34,7 +33,7 @@ VideoPresenter::VideoPresenter(
 
     con(model, &ProcessModel::videoChanged,
         this, [&] ( ) {
-        m_view->setVideo(m_layer.processModel().file().path);
+        m_view->setVideo(m_layer.file().path);
     });
 
     con(model, &ProcessModel::play, this, [=] { view->player.play(); });
@@ -76,14 +75,14 @@ void VideoPresenter::parentGeometryChanged()
 {
 }
 
-const Process::LayerModel& VideoPresenter::layerModel() const
+const Process::ProcessModel& VideoPresenter::model() const
 {
     return m_layer;
 }
 
 const Id<Process::ProcessModel>& VideoPresenter::modelId() const
 {
-    return m_layer.processModel().id();
+    return m_layer.id();
 }
 
 }

@@ -13,7 +13,6 @@
 
 class DataStream;
 class JSONObject;
-namespace Process { class LayerModel; }
 namespace Process { class ProcessModel; }
 class QObject;
 #include <iscore/model/Identifier.hpp>
@@ -30,7 +29,7 @@ struct VideoFile
 class ISCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessModel
 {
         ISCORE_SERIALIZE_FRIENDS
-        MODEL_METADATA_IMPL(Video::ProcessModel)
+        PROCESS_METADATA_IMPL(Video::ProcessModel)
 
         Q_OBJECT
 
