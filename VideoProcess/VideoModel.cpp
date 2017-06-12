@@ -54,7 +54,7 @@ ProcessExecutor::ProcessExecutor(ProcessModel& video):
 {
 }
 
-ossia::state_element ProcessExecutor::state()
+ossia::state_element ProcessExecutor::state(ossia::time_value date, double pos)
 {
     return {};
 }
@@ -82,7 +82,7 @@ void ProcessExecutor::resume()
 }
 
 ossia::state_element ProcessExecutor::offset(
-        ossia::time_value off)
+        ossia::time_value off, double pos)
 {
     m_player.seek(off);
     return {};
