@@ -6,22 +6,22 @@
 namespace Video
 {
 SetVideo::SetVideo(
-    Path<ProcessModel>&& model,
+    const ProcessModel& obj,
     const QString& text):
-  m_model{std::move(model)},
+  m_model{obj},
   m_new{text}
 {
-    m_old = m_model.find().file().path;
+    m_old = obj.file().path;
 }
 
-void SetVideo::undo() const
+void SetVideo::undo(const iscore::DocumentContext& ctx) const
 {
-    m_model.find().setFile(VideoFile{m_old});
+    m_model.find(ctx).setFile(VideoFile{m_old});
 }
 
-void SetVideo::redo() const
+void SetVideo::redo(const iscore::DocumentContext& ctx) const
 {
-    m_model.find().setFile(VideoFile{m_new});
+    m_model.find(ctx).setFile(VideoFile{m_new});
 
 }
 

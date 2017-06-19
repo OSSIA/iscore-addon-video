@@ -14,11 +14,11 @@ class SetVideo final : public iscore::Command
         ISCORE_COMMAND_DECL(Video::CommandFactoryName(), SetVideo, "Set a video")
     public:
         SetVideo(
-                Path<ProcessModel>&& model,
-                const QString& path);
+            const ProcessModel& obj,
+            const QString& path);
 
-        void undo() const override;
-        void redo() const override;
+        void undo(const iscore::DocumentContext& ctx) const override;
+        void redo(const iscore::DocumentContext& ctx) const override;
 
     protected:
         void serializeImpl(DataStreamInput & s) const override;
