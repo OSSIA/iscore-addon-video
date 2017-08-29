@@ -90,7 +90,7 @@ class ProcessExecutor final :
     public:
         ProcessExecutor(ProcessModel& video);
 
-        void start() override;
+        void start(ossia::state&) override;
         void stop() override;
         void pause() override;
         void resume() override;

@@ -59,7 +59,7 @@ ossia::state_element ProcessExecutor::state(ossia::time_value date, double pos)
     return {};
 }
 
-void ProcessExecutor::start()
+void ProcessExecutor::start(ossia::state&)
 {
   // TODO we should play the video and hide it if it is muted.
   if(unmuted())
