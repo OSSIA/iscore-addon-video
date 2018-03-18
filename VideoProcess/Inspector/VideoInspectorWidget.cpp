@@ -7,19 +7,19 @@
 #include "VideoInspectorWidget.hpp"
 #include <VideoProcess/Commands/SetVideo.hpp>
 #include <Inspector/InspectorWidgetBase.hpp>
-#include <iscore/command/Dispatchers/CommandDispatcher.hpp>
-#include <iscore/document/DocumentInterface.hpp>
-#include <iscore/model/path/Path.hpp>
-#include <iscore/tools/Todo.hpp>
-#include <iscore/document/DocumentContext.hpp>
-#include <iscore/widgets/SignalUtils.hpp>
+#include <score/command/Dispatchers/CommandDispatcher.hpp>
+#include <score/document/DocumentInterface.hpp>
+#include <score/model/path/Path.hpp>
+#include <score/tools/Todo.hpp>
+#include <score/document/DocumentContext.hpp>
+#include <score/widgets/SignalUtils.hpp>
 
 
 namespace Video
 {
 InspectorWidget::InspectorWidget(
         const ProcessModel& model,
-        const iscore::DocumentContext& doc,
+        const score::DocumentContext& doc,
         QWidget* parent) :
     InspectorWidgetDelegate_T {model, parent},
     m_dispatcher{doc.commandStack}

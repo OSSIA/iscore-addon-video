@@ -1,8 +1,8 @@
 #include <VideoProcess/VideoModel.hpp>
 
 #include "SetVideo.hpp"
-#include <iscore/serialization/DataStreamVisitor.hpp>
-#include <iscore/model/path/PathSerialization.hpp>
+#include <score/serialization/DataStreamVisitor.hpp>
+#include <score/model/path/PathSerialization.hpp>
 namespace Video
 {
 SetVideo::SetVideo(
@@ -14,12 +14,12 @@ SetVideo::SetVideo(
     m_old = obj.file().path;
 }
 
-void SetVideo::undo(const iscore::DocumentContext& ctx) const
+void SetVideo::undo(const score::DocumentContext& ctx) const
 {
     m_model.find(ctx).setFile(VideoFile{m_old});
 }
 
-void SetVideo::redo(const iscore::DocumentContext& ctx) const
+void SetVideo::redo(const score::DocumentContext& ctx) const
 {
     m_model.find(ctx).setFile(VideoFile{m_new});
 

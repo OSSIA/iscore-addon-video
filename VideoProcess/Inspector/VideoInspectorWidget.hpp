@@ -2,9 +2,9 @@
 #include <Process/Inspector/ProcessInspectorWidgetDelegate.hpp>
 #include <VideoProcess/VideoModel.hpp>
 #include <QString>
-#include <iscore/command/Dispatchers/CommandDispatcher.hpp>
+#include <score/command/Dispatchers/CommandDispatcher.hpp>
 
-namespace iscore{
+namespace score{
 class Document;
 struct DocumentContext;
 }
@@ -21,7 +21,7 @@ class InspectorWidget final :
     public:
         explicit InspectorWidget(
                 const ProcessModel& object,
-                const iscore::DocumentContext& context,
+                const score::DocumentContext& context,
                 QWidget* parent);
 
     private:

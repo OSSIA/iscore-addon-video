@@ -9,10 +9,10 @@
 namespace Video
 {
 
-using ProcessFactory = Process::GenericProcessModelFactory<
+using ProcessFactory = Process::ProcessFactory_T<
     Video::ProcessModel>;
 
-using LayerFactory = Process::GenericLayerFactory<
+using LayerFactory = Process::LayerFactory_T<
 Video::ProcessModel,
 Video::VideoPresenter,
 Video::VideoView,

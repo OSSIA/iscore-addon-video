@@ -6,8 +6,8 @@
 #include <VideoProcess/VideoModel.hpp>
 #include <VideoProcess/VideoLayerModel.hpp>
 #include <Process/LayerPresenter.hpp>
-#include <iscore/document/DocumentInterface.hpp>
-#include <iscore/document/DocumentContext.hpp>
+#include <score/document/DocumentInterface.hpp>
+#include <score/document/DocumentContext.hpp>
 class QMenu;
 class QObject;
 
@@ -25,7 +25,7 @@ VideoPresenter::VideoPresenter(
 {
     putToFront();
 
-    con(model.metadata(), &iscore::ModelMetadata::NameChanged,
+    con(model.metadata(), &score::ModelMetadata::NameChanged,
             this, [&] (QString s)
     {
         putToFront();

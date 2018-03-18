@@ -1,5 +1,5 @@
 #include "VideoCommandFactory.hpp"
-#include <iscore/command/Command.hpp>
+#include <score/command/Command.hpp>
 
 namespace Video
 {

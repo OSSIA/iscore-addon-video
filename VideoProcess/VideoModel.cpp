@@ -1,13 +1,13 @@
-#include <iscore/tools/std/Optional.hpp>
-#include <iscore/document/DocumentInterface.hpp>
+#include <score/tools/std/Optional.hpp>
+#include <score/document/DocumentInterface.hpp>
 #include <QDebug>
 #include <ossia/editor/state/state_element.hpp>
 #include <QPoint>
 #include "VideoLayerModel.hpp"
 #include "VideoModel.hpp"
-#include <iscore/model/ModelMetadata.hpp>
-#include <iscore/model/IdentifiedObjectMap.hpp>
-#include <iscore/model/Identifier.hpp>
+#include <score/model/ModelMetadata.hpp>
+#include <score/model/IdentifiedObjectMap.hpp>
+#include <score/model/Identifier.hpp>
 
 namespace Process { class LayerModel; }
 namespace Process { class ProcessModel; }
@@ -24,26 +24,17 @@ ProcessModel::ProcessModel(
     setFile(VideoFile{"/tmp/BadApple.mp4"});
 }
 
-ProcessModel::ProcessModel(
-        const ProcessModel& source,
-        const Id<Process::ProcessModel>& id,
-        QObject* parent):
-    Process::ProcessModel {source, id, Metadata<ObjectKey_k, ProcessModel>::get(), parent},
-    m_video(source.m_video)
-{
-    metadata().setInstanceName(*this);
-}
-
 void ProcessModel::stopExecution()
 {
     // used to stop video on global stop
     // TODO get rid of this
     qDebug("dem stops");
-    emit execution(false);
+    execution(false);
 }
 }
+/*
 
-#include <ossia/editor/scenario/time_constraint.hpp>
+#include <ossia/editor/scenario/time_interval.hpp>
 // MOVEME
 namespace Video
 {
@@ -92,7 +83,7 @@ Component::Component(
         ::Engine::Execution::ConstraintComponent& parentConstraint,
         ProcessModel& element,
         const ::Engine::Execution::Context& ctx,
-        const Id<iscore::Component>& id,
+        const Id<score::Component>& id,
         QObject* parent):
     ::Engine::Execution::ProcessComponent_T<Video::ProcessModel, ProcessExecutor>{parentConstraint, element, ctx, id, "VideoComponent", parent}
 {
@@ -101,3 +92,4 @@ Component::Component(
 }
 }
 }
+*/

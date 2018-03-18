@@ -1,5 +1,5 @@
-#include <iscore/serialization/DataStreamVisitor.hpp>
-#include <iscore/serialization/JSONVisitor.hpp>
+#include <score/serialization/DataStreamVisitor.hpp>
+#include <score/serialization/JSONVisitor.hpp>
 #include <QJsonObject>
 #include <QJsonValue>
 #include <algorithm>
@@ -7,8 +7,8 @@
 #include "VideoLayerModel.hpp"
 #include "VideoModel.hpp"
 #include <State/Address.hpp>
-#include <iscore/serialization/JSONValueVisitor.hpp>
-#include <iscore/serialization/VisitorCommon.hpp>
+#include <score/serialization/JSONValueVisitor.hpp>
+#include <score/serialization/VisitorCommon.hpp>
 
 template <>
 void DataStreamReader::read(const Video::ProcessModel& video)

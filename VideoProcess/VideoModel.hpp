@@ -6,7 +6,7 @@
 #include <QString>
 
 #include <Process/TimeValue.hpp>
-#include <iscore/serialization/VisitorInterface.hpp>
+#include <score/serialization/VisitorInterface.hpp>
 
 #include <VideoProcess/VideoProcessMetadata.hpp>
 #include <QUrl>
@@ -15,8 +15,8 @@ class DataStream;
 class JSONObject;
 namespace Process { class ProcessModel; }
 class QObject;
-#include <iscore/model/Identifier.hpp>
-#include <iscore_addon_video_export.h>
+#include <score/model/Identifier.hpp>
+#include <score_addon_video_export.h>
 
 
 namespace Video
@@ -26,9 +26,9 @@ struct VideoFile
         QString path;
 };
 
-class ISCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessModel
+class SCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessModel
 {
-        ISCORE_SERIALIZE_FRIENDS
+        SCORE_SERIALIZE_FRIENDS
         PROCESS_METADATA_IMPL(Video::ProcessModel)
 
         Q_OBJECT
@@ -51,10 +51,10 @@ class ISCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessMode
         void setFile(const VideoFile& path)
         {
             m_video = path;
-            emit videoChanged();
+            videoChanged();
         }
 
-    signals:
+    Q_SIGNALS:
         void videoChanged();
 
         void play();
@@ -64,17 +64,13 @@ class ISCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessMode
         void setSpeed(double speed);
         void seek(qint64 pos);
 
-    protected:
-        ProcessModel(const ProcessModel& source,
-                     const Id<Process::ProcessModel>& id,
-                     QObject* parent);
-
     private:
         void stopExecution() override;
         VideoFile m_video;
 
 };
 }
+/*
 #include <QMediaPlayer>
 #include <Engine/Executor/ProcessComponent.hpp>
 #include <ossia/editor/scenario/time_value.hpp>
@@ -111,10 +107,11 @@ class Component final :
                 Engine::Execution::ConstraintComponent& parentConstraint,
                 ProcessModel& element,
                 const Engine::Execution::Context& ctx,
-                const Id<iscore::Component>& id,
+                const Id<score::Component>& id,
                 QObject* parent);
 };
 using ComponentFactory = ::Engine::Execution::ProcessComponentFactory_T<Component>;
 }
 }
+*/
 
