@@ -41,7 +41,7 @@ set(SRCS
 )
 
 add_library(${PROJECT_NAME} ${SRCS} ${HDRS} ${QRCS})
-score_moc_headers(${PROJECT_NAME} "${HDRS}")
+#score_moc_headers(${PROJECT_NAME} "${HDRS}")
 
 ### If there are commands this will generate the files showcased in score_plugin_video.cpp ###
 score_generate_command_list_file(${PROJECT_NAME} "${HDRS}")

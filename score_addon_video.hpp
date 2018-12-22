@@ -10,7 +10,7 @@
 #include <score/application/ApplicationContext.hpp>
 #include <score/command/CommandGeneratorMap.hpp>
 #include <score/command/Command.hpp>
-#include <score/plugins/customfactory/FactoryInterface.hpp>
+// #include <score/plugins/FactoryInterface.hpp>
 
 class score_addon_video final :
         public QObject,
@@ -28,7 +28,7 @@ class score_addon_video final :
   SCORE_PLUGIN_METADATA(1, "5f2cd9ce-5744-467a-a53a-beb0e8c10ebe")
     public:
         score_addon_video();
-        virtual ~score_addon_video();
+        ~score_addon_video() override;
 
     private:
         // Process & inspector

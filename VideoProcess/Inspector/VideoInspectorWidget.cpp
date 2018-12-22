@@ -55,7 +55,7 @@ InspectorWidget::InspectorWidget(
         if(!QFile::exists(res))
             return;
 
-        m_dispatcher.submitCommand(new SetVideo{process(), res});
+        m_dispatcher.submit(new SetVideo{process(), res});
     });
 
     vlay->addWidget(m_label);

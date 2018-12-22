@@ -5,7 +5,7 @@
 #include <VideoProcess/VideoLayerModel.hpp>
 #include <VideoProcess/VideoPresenter.hpp>
 #include <VideoProcess/VideoView.hpp>
-#include <Process/LayerModelPanelProxy.hpp>
+// #include <Process/LayerModelPanelProxy.hpp>
 namespace Video
 {
 
@@ -15,8 +15,7 @@ using ProcessFactory = Process::ProcessFactory_T<
 using LayerFactory = Process::LayerFactory_T<
 Video::ProcessModel,
 Video::VideoPresenter,
-Video::VideoView,
-Process::GraphicsViewLayerPanelProxy>;
+Video::VideoView>;
 
 }
 
