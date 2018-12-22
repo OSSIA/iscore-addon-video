@@ -35,10 +35,12 @@ std::vector<std::unique_ptr<score::InterfaceBase>> score_addon_video::factories(
             score::ApplicationContext,
         FW<Process::ProcessModelFactory,
            Video::ProcessFactory>,
+        FW<Process::LayerFactory,
+           Video::LayerFactory>,
         FW<Process::InspectorWidgetDelegateFactory,
-             Video::InspectorFactory>
-      // , FW<Engine::Execution::ProcessComponentFactory,
-      //      Video::Executor::ComponentFactory>
+           Video::InspectorFactory>,
+        FW<Execution::ProcessComponentFactory,
+           Video::ComponentFactory>
     >(ctx, key);
 }
 

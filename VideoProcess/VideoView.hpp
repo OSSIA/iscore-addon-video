@@ -12,7 +12,6 @@ namespace Video
 {
 class VideoView final : public Process::LayerView
 {
-        Q_OBJECT
     public:
         explicit VideoView(QGraphicsItem* parent);
 

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <Process/Process.hpp>
 #include <State/Address.hpp>
 #include <VideoProcess/VideoModel.hpp>
@@ -15,6 +15,7 @@ class DataStream;
 class JSONObject;
 namespace Process { class ProcessModel; }
 class QObject;
+#include <Process/Execution/ProcessComponent.hpp>
 #include <score/model/Identifier.hpp>
 #include <score_addon_video_export.h>
 
@@ -68,49 +69,18 @@ class SCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessModel
         VideoFile m_video;
 
 };
-}
-/*
-#include <QMediaPlayer>
-#include <Engine/Executor/ProcessComponent.hpp>
-#include <ossia/editor/scenario/time_value.hpp>
-#include <ossia/editor/scenario/time_process.hpp>
-// MOVEME
-namespace Video
-{
-namespace Executor
-{
-class ProcessExecutor final :
-        public ossia::time_process
-{
-    public:
-        ProcessExecutor(ProcessModel& video);
 
-        void start(ossia::state&) override;
-        void stop() override;
-        void pause() override;
-        void resume() override;
-        ossia::state_element state(ossia::time_value date, double pos) override;
-        ossia::state_element offset(ossia::time_value, double pos) override;
-
-    private:
-        ProcessModel& m_player;
-};
-
-
-class Component final :
-        public ::Engine::Execution::ProcessComponent_T<Video::ProcessModel, Video::Executor::ProcessExecutor>
+class Executor final :
+        public ::Execution::ProcessComponent_T<Video::ProcessModel, Video::Executor>
 {
         COMPONENT_METADATA("a8829dcd-09a9-48e5-bd47-8e0164eef2a5")
     public:
-        Component(
-                Engine::Execution::ConstraintComponent& parentConstraint,
+        Executor(
                 ProcessModel& element,
-                const Engine::Execution::Context& ctx,
+                const Execution::Context& ctx,
                 const Id<score::Component>& id,
                 QObject* parent);
 };
-using ComponentFactory = ::Engine::Execution::ProcessComponentFactory_T<Component>;
+using ComponentFactory = ::Execution::ProcessComponentFactory_T<Executor>;
 }
-}
-*/
 

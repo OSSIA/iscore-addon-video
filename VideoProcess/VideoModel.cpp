@@ -9,6 +9,8 @@
 #include <score/model/IdentifiedObjectMap.hpp>
 #include <score/model/Identifier.hpp>
 #include <wobjectimpl.h>
+#include <ossia/dataflow/graph_node.hpp>
+#include <ossia/dataflow/node_process.hpp>
 W_OBJECT_IMPL(Video::ProcessModel)
 
 namespace Video
@@ -30,65 +32,62 @@ void ProcessModel::stopExecution()
     qDebug("dem stops");
     execution(false);
 }
-}
-/*
 
-#include <ossia/editor/scenario/time_interval.hpp>
-// MOVEME
-namespace Video
+class Process : public ossia::node_process
 {
-namespace Executor
-{
-ProcessExecutor::ProcessExecutor(ProcessModel& video):
-    m_player{video}
-{
-}
+public:
+  Process(ProcessModel& p, ossia::node_ptr n)
+    : ossia::node_process{n}
+    , m_player{p}
+  {
 
-ossia::state_element ProcessExecutor::state(ossia::time_value date, double pos)
-{
-    return {};
-}
-
-void ProcessExecutor::start(ossia::state&)
-{
-  // TODO we should play the video and hide it if it is muted.
-  if(unmuted())
-    m_player.play();
-}
-
-void ProcessExecutor::stop()
-{
+  }
+  void start() override
+  {
+    if(unmuted())
+      m_player.play();
+  }
+  void stop() override
+  {
     m_player.stop();
-}
-
-void ProcessExecutor::pause()
-{
+  }
+  void pause() override
+  {
     m_player.pause();
-}
-
-void ProcessExecutor::resume()
-{
+  }
+  void resume() override
+  {
     m_player.resume();
-}
+  }
+private:
+  ProcessModel& m_player;
 
-ossia::state_element ProcessExecutor::offset(
-        ossia::time_value off, double pos)
+  // time_process interface
+public:
+  void offset(ossia::time_value date, double pos) override
+  {
+    m_player.seek(date);
+  }
+  void transport(ossia::time_value date, double pos) override
+  {
+    m_player.seek(date);
+  }
+};
+
+class Node : public ossia::graph_node
 {
-    m_player.seek(off);
-    return {};
-}
 
-Component::Component(
-        ::Engine::Execution::ConstraintComponent& parentConstraint,
+};
+
+Executor::Executor(
         ProcessModel& element,
-        const ::Engine::Execution::Context& ctx,
+        const ::Execution::Context& ctx,
         const Id<score::Component>& id,
         QObject* parent):
-    ::Engine::Execution::ProcessComponent_T<Video::ProcessModel, ProcessExecutor>{parentConstraint, element, ctx, id, "VideoComponent", parent}
+    Execution::ProcessComponent_T<Video::ProcessModel, Executor>{element, ctx, id, "VideoComponent", parent}
 {
-    auto proc = std::make_shared<ProcessExecutor>(element);
-    m_ossia_process = proc;
+  auto node = std::make_shared<Node>();
+  auto proc = std::make_shared<Process>(element, node);
+  m_ossia_process = proc;
 }
 }
-}
-*/
