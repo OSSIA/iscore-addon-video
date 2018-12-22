@@ -13,18 +13,10 @@
 // #include <score/plugins/FactoryInterface.hpp>
 
 class score_addon_video final :
-        public QObject,
         public score::Plugin_QtInterface,
         public score::FactoryInterface_QtInterface,
         public score::CommandFactory_QtInterface
 {
-        Q_OBJECT
-        Q_PLUGIN_METADATA(IID FactoryInterface_QtInterface_iid)
-        Q_INTERFACES(
-                score::Plugin_QtInterface
-                score::FactoryInterface_QtInterface
-                score::CommandFactory_QtInterface
-                )
   SCORE_PLUGIN_METADATA(1, "5f2cd9ce-5744-467a-a53a-beb0e8c10ebe")
     public:
         score_addon_video();

@@ -8,10 +8,9 @@
 #include <score/model/ModelMetadata.hpp>
 #include <score/model/IdentifiedObjectMap.hpp>
 #include <score/model/Identifier.hpp>
+#include <wobjectimpl.h>
+W_OBJECT_IMPL(Video::ProcessModel)
 
-namespace Process { class LayerModel; }
-namespace Process { class ProcessModel; }
-class QObject;
 namespace Video
 {
 ProcessModel::ProcessModel(

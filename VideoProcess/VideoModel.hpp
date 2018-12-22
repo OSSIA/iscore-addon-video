@@ -31,7 +31,7 @@ class SCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessModel
         SCORE_SERIALIZE_FRIENDS
         PROCESS_METADATA_IMPL(Video::ProcessModel)
 
-        Q_OBJECT
+        W_OBJECT(ProcessModel)
 
     public:
         ProcessModel(const TimeVal& duration,
@@ -54,15 +54,14 @@ class SCORE_ADDON_VIDEO_EXPORT ProcessModel final : public Process::ProcessModel
             videoChanged();
         }
 
-    Q_SIGNALS:
-        void videoChanged();
+        void videoChanged() W_SIGNAL(videoChanged);
 
-        void play();
-        void pause();
-        void resume();
-        void stop();
-        void setSpeed(double speed);
-        void seek(qint64 pos);
+        void play() W_SIGNAL(play);
+        void pause() W_SIGNAL(pause);
+        void resume() W_SIGNAL(resume);
+        void stop() W_SIGNAL(stop);
+        void setSpeed(double speed) W_SIGNAL(setSpeed, speed);
+        void seek(qint64 pos) W_SIGNAL(seek, pos);
 
     private:
         void stopExecution() override;

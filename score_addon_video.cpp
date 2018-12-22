@@ -17,10 +17,8 @@
 #include <VideoProcess/VideoFactory.hpp>
 
 #include <wobjectimpl.h>
-W_OBJECT_IMPL(score_addon_video)
 
-score_addon_video::score_addon_video() :
-    QObject {}
+score_addon_video::score_addon_video()
 {
 }
 
@@ -39,8 +37,8 @@ std::vector<std::unique_ptr<score::InterfaceBase>> score_addon_video::factories(
            Video::ProcessFactory>,
         FW<Process::InspectorWidgetDelegateFactory,
              Video::InspectorFactory>
-        //, FW<Engine::Execution::ProcessComponentFactory,
-        //     Video::Executor::ComponentFactory>
+      // , FW<Engine::Execution::ProcessComponentFactory,
+      //      Video::Executor::ComponentFactory>
     >(ctx, key);
 }
 
@@ -57,5 +55,5 @@ std::pair<const CommandGroupKey, CommandGeneratorMap> score_addon_video::make_co
 }
 
 
-//#include <score/plugins/PluginInstances.hpp>
-//SCORE_EXPORT_PLUGIN(score_addon_video)
+#include <score/plugins/PluginInstances.hpp>
+SCORE_EXPORT_PLUGIN(score_addon_video)
